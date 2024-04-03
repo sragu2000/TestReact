@@ -1,6 +1,6 @@
 import { MultiSelectIcons } from "./Icons";
 import styles from "./MultiSelect.module.css"
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 const MultiSelect = () => {
     const [showSelectPanel, setShowSelectPanel] = useState(false);
     const [buttonWidth, setButtonWidth] = useState("");
@@ -13,23 +13,6 @@ const MultiSelect = () => {
         { "label": "United States", "value": "US" },
         { "label": "United", "value": "U" }
     ])
-    
-
-
-    // const handleUserSelect = (selectedObj) => {
-    //     let isItemAlreadySelected = selectedItems.filter((item) => {
-    //         return item.label === selectedObj.label
-    //     })
-    //     console.log(isItemAlreadySelected)
-    //     if (isItemAlreadySelected.length === 0) {
-    //         setSelectedItems([...selectedItems, selectedObj]);
-    //     } else {
-    //         let s = selectedItems.filter((item) => {
-    //             return item.label !== selectedObj.label
-    //         })
-    //         setSelectedItems(s);
-    //     }
-    // }
 
     const isObjectInTheArray = (targetObject, targetArray) => {
         // sample target object -> { "label": "Srilanka", "value": "LK" }
@@ -61,8 +44,10 @@ const MultiSelect = () => {
             setSelectedItems([...selectedItems, changedObject]);
             setOptions(removeObjectItemFromArray(changedObject, options));
         }
+        setShowSelectPanel(false);
     }
 
+    console.log(selectedItems)
 
     const hanldeSelectPanel = () => {
         if (showSelectPanel === false) {
@@ -74,15 +59,24 @@ const MultiSelect = () => {
 
     return (
         <div className={styles.multiSelectContainer}>
-            <div className={styles.multiSelectButton} onClick={hanldeSelectPanel}>
-                <span>
-                    {selectedItems.length === 0 ? "Select": selectedItems.map((item)=>{
-                        return <span>{item.label}</span>
+            <div className={styles.control} onClick={hanldeSelectPanel}>
+                <span className={styles.valueContainer}>
+                    {selectedItems.length === 0 ? <span className={styles.input}>Select</span> : selectedItems.map((item) => {
+                        return (
+                            <span className={styles.multiValue}>
+                                <span className={styles.multiValueGeneric}>{item.label}</span>
+                                <div className={styles.multiValueRemove} onClick={()=>{alert("Removed")}}>x</div>
+                            </span>
+                        )
                     })}
                 </span>
-                {
-                    showSelectPanel ? MultiSelectIcons.caretUp : MultiSelectIcons.caretDown
-                }
+                <span className={styles["indicatorSeparator"]}></span>
+                <span className={styles.indicatorContainer}>
+                    {
+                        showSelectPanel ? MultiSelectIcons.caretUp : MultiSelectIcons.caretDown
+                    }
+                </span>
+
             </div>
             {
                 showSelectPanel &&
@@ -90,19 +84,21 @@ const MultiSelect = () => {
                     {
                         Array.isArray(options)
                             ?
-                            options.map((option, optionIndex) => {
-                                return (
-                                    <div className={styles.singleOption}>
-                                        <input
-                                            style = {{"display":"none"}}
-                                            id={`multiSelectOption${optionIndex}`}
-                                            type="checkbox" value={option.value}
-                                            onChange={(e) => { handleUserSelect({ "label": option.label, "value": option.value }) }}
-                                        />
-                                        <label className={styles.labelStyle} htmlFor={`multiSelectOption${optionIndex}`}>{option.label}</label>
-                                    </div>
-                                )
-                            })
+                            options.length > 0 ?
+                                options.map((option, optionIndex) => {
+                                    return (
+                                        <div className={styles.singleOption}>
+                                            <input
+                                                style={{ "display": "none" }}
+                                                id={`multiSelectOption${optionIndex}`}
+                                                type="checkbox" value={option.value}
+                                                onChange={(e) => { handleUserSelect({ "label": option.label, "value": option.value }) }}
+                                            />
+                                            <label className={styles.labelStyle} htmlFor={`multiSelectOption${optionIndex}`}>{option.label}</label>
+                                        </div>
+                                    )
+                                })
+                                : <span> No Options</span>
                             : "Invalid Options"
                     }
                 </div>

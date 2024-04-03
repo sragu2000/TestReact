@@ -3,21 +3,99 @@
 }
 
 
-.multiSelectButton {
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding-block: 1px;
-    padding-inline: 2px;
-    overflow-x: auto;
-    padding: 8px;
-    border: none;
-    width: 100px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
+.control {
+    width: 200px;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.349);
+    cursor: default;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    min-height: 38px;
+    outline: 0 !important;
+    position: relative;
+    -webkit-transition: all 100ms;
+    transition: all 100ms;
+    background-color: hsl(0, 0%, 100%);
+    border-color: hsl(0, 0%, 80%);
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+}
+
+.valueContainer {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    /* overflow: hidden; */
+    overflow: auto;
+    scrollbar-width: none;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    height: 38px;
+}
+
+.indicatorContainer {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: color 150ms;
+    transition: color 150ms;
+    color: hsl(0, 0%, 80%);
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.indicatorSeparator {
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    width: 1px;
+    background-color: hsl(0, 0%, 80%);
+    margin-bottom: 8px;
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+
+.input {
+    visibility: visible;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: inline-grid;
+    grid-area: 1 / 1 / 2 / 3;
+    grid-template-columns: 0 min-content;
+    margin: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    color: hsl(0, 0%, 20%);
+    box-sizing: border-box;
 }
 
 .multiSelectPanel {
@@ -25,7 +103,7 @@
     margin-top: 10px;
     position: absolute;
     background-color: white;
-    padding: 10px;
+    /* padding: 10px; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
@@ -39,12 +117,67 @@
     display: flex;
     margin: 4px;
     gap: 15px;
+    padding: 0px 10px 0px 10px;
 }
 
 .labelStyle {
     cursor: pointer;
+    padding:5px 0px 5px 0px;
+    width: 100%
 }
 
-.labelStyle:hover {
-    color: rgba(129, 129, 212, 0.89);
+.singleOption:hover {
+    background-color: rgb(159, 194, 238);
+    border-radius: 10px;
+    /* color: rgba(129, 129, 212, 0.89); */
+    
+}
+
+
+.multiValueGeneric {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 2px;
+    color: hsl(0, 0%, 20%);
+    font-size: 85%;
+    padding: 3px;
+    padding-left: 6px;
+    box-sizing: border-box;
+}
+
+.multiValue {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-width: 0;
+    background-color: hsl(0, 0%, 90%);
+    border-radius: 2px;
+    margin: 2px;
+    box-sizing: border-box;
+}
+
+.multiValueRemove {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    box-sizing: border-box;
+}
+
+.multiValueRemove:hover {
+    background-color: #FFBDAD;
+    color: #DE350B;
+}
+
+.selectedItemCloseButton:hover {
+    background-color: rgb(245, 178, 178);
 }
