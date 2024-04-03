@@ -1,0 +1,50 @@
+.multiSelectContainer {
+    position: relative;
+}
+
+
+.multiSelectButton {
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-block: 1px;
+    padding-inline: 2px;
+    overflow-x: auto;
+    padding: 8px;
+    border: none;
+    width: 100px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.349);
+}
+
+.multiSelectPanel {
+    box-sizing: border-box;
+    margin-top: 10px;
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.caret {
+    width: 15px;
+    height: 15px;
+}
+
+.singleOption {
+    display: flex;
+    margin: 4px;
+    gap: 15px;
+}
+
+.labelStyle {
+    cursor: pointer;
+}
+
+.labelStyle:hover {
+    color: rgba(129, 129, 212, 0.89);
+}
